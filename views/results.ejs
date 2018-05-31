@@ -13,7 +13,7 @@
 <body>
     <style>
         body {
-            margin-top:50px;
+            margin:50px;
         }
     </style>
     <div class="container-fluid">
@@ -32,7 +32,7 @@
         <div class="row justify-content-sm-center">
                 <% data["Search"].forEach(movie => { %>
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" style="height: 300px;" src="<%= movie["Poster"] == 'N/A'? 'images/nophoto.png' : movie["Poster"] %>" />
+                        <img class="card-img-top" style="height: 300px;" src="<%= movie["Poster"] == 'N/A'? 'images/nophoto.jpg' : movie["Poster"] %>" />
                         <div class="card-body">
                             <h5 class="card-title"><%= movie["Title"] %></h5>
                             <p class="card-text"><%= movie["Year"] %></p>
