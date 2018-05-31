@@ -14,7 +14,8 @@ router.get('/results', (req, res, next) => {
 
 
 
-    var data = JSON.parse(body);
+    var data = JSON.parse(body)
+    data = data.Response == 'False' ? {Search: [{Title:'No Movies', Year:'', imdbID:'',Poster:'N/A'}]} : data
     console.log(data)
     res.render('results', {data});
   });
