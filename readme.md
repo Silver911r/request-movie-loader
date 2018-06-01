@@ -33,7 +33,7 @@ Run NPM install command in the folder that contains the package.json file.
 Create .env file with MOVIE_API_KEY=YOURKEY
 
 ```
-Run the command 'node start'
+Run the command 'npm start'
 ```
 
 
