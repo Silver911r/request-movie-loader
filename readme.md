@@ -2,6 +2,8 @@
 
 Uses the omdpapi.com to search for a term, then displays the response.
 
+This project uses an express server, but there is also a standalone.html, that will make the movie search from your browser without any server set up.  Just put your api key in the html where marked and you are good to go.
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
