@@ -27,7 +27,7 @@ A step by step series of examples that tell you how to get a development env run
 Download repo to your computer
 
 ```
-Run NPM install command in the folder with terminal
+Run NPM install command in the folder that contains the package.json file.
 ```
 
 Create .env file with MOVIE_API_KEY=YOURKEY
