@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>🎬 Movie Search 🍿</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+  <body>
+    <style>
+        body{
+            margin:2em;
+        }
+    </style>
+    <div class="container-fluid">
+        <div class="row justify-content-sm-center">
+            <h1>📽 🍿 Search 🎞 🎬</h1>
+        </div>
+        <div class="row justify-content-sm-center">
+            <input type="text" placeholder="New Search" name="search">
+            <button onclick="searchMovie()">Submit</button>
+        </div>
+        <br>
+        <div id="movies" class="row justify-content-sm-center">
+            
+        </div>
+    </div>
+    <script>
+
+        // your API Key Goes Here go to omdbapi.com to get your key
+        const apikey = 'put your api key here'
+
+        const searchMovie = () => {
+            // grab desired search term
+            let search = document.querySelector('input')
+            // grab the main div to load movies
+            let movies = document.querySelector('#movies')
+            // create url for fetch
+            let url = `http://www.omdbapi.com/?apikey=${apikey}&s=${search.value}`;
+            // fetch requires a url and will return a string
+            fetch(url)
+                // turn string into json
+                .then(data => data.json())
+                // data is returned as json
+                .then(data => {
+                    // clear out the main div
+                    movies.innerHTML = '';
+                    // run create a card for each movie in the object
+                    data["Search"].forEach( movie => {
+                        movies.innerHTML += `
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top" style="height: 300px;" src="${movie["Poster"] == 'N/A'? 'images/nophoto.jpg' : movie["Poster"]}" />
+                                <div class="card-body">
+                                    <h5 class="card-title">${ movie["Title"] }</h5>
+                                    <p class="card-text">${ movie["Year"] }</p>
+                                    <a href="https://www.imdb.com/title/${ movie["imdbID"] }" class="btn btn-primary">IMDB</a>
+                                </div>
+                            </div>
+                            `
+                        });
+                    });
+        }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
